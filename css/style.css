@@ -1,0 +1,80 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#081f4d;
+    color:white;
+    font-family:Arial, sans-serif;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    text-align:center;
+}
+
+.logo{
+    width:120px;
+    margin-bottom:20px;
+}
+
+h1{
+    margin-bottom:10px;
+}
+
+.subtitle{
+    margin-bottom:20px;
+}
+
+#signature-pad{
+    width:700px;
+    height:250px;
+    max-width:90vw;
+    background:white;
+    border-radius:10px;
+    border:2px solid #ddd;
+}
+
+.buttons{
+    margin-top:20px;
+}
+
+button{
+    padding:12px 24px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin:0 10px;
+}
+
+#launchBtn{
+    background:#f5a800;
+    color:black;
+}
+
+#launchBtn:disabled{
+    opacity:0.4;
+    cursor:not-allowed;
+}
+
+#revealScreen{
+    display:none;
+    text-align:center;
+}
+
+#revealLogo{
+    width:250px;
+    opacity:0;
+    transform:scale(.3);
+    transition:all 2s ease;
+}
+
+.showLogo{
+    opacity:1 !important;
+    transform:scale(1) !important;
+}
