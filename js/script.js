@@ -68,7 +68,7 @@ launchBtn.addEventListener("click", () => {
 
     // Redirect after 5 sec
     setTimeout(() => {
-        window.location.href = "https://www.dlb.lk";
+        window.location.href = "https://www.welfare.dlb.lk";
     }, 5000);
 
 });
