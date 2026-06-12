@@ -3,55 +3,55 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>DLB Welfare Website Launch</title>
 
-<link rel="stylesheet" href="css/style.css">
-
+<!-- GSAP Animation Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<!-- Signature Pad Library -->
 <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.2.0/dist/signature_pad.umd.min.js"></script>
 
+<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <div class="container">
-
-    <img src="assets/logo.png" class="logo">
-
-    <h1>DLB Welfare Society</h1>
-
-    <p class="subtitle">
-        Official Website Launch Ceremony
-    </p>
-
-    <canvas id="signature-pad"></canvas>
-
-    <div class="buttons">
-
-        <button id="clearBtn">
-            Clear Signature
-        </button>
-
-        <button id="launchBtn" disabled>
-            Launch Website
-        </button>
-
+    <div class="brand-header">
+        <img src="assets/logo.png" class="logo" alt="DLB Logo">
+        <h1>DEVELOPMENT LOTTERIES BOARD</h1>
+        <div class="separator"></div>
+        <h2>Welfare Society Digital Platform</h2>
+        <p class="subtitle">Official Grand Launch Ceremony</p>
     </div>
 
+    <!-- Professional Signature Section -->
+    <div class="signature-container">
+        <label for="signature-pad">AUTHORIZED SIGN-OFF</label>
+        <div class="pad-wrapper" id="padWrapper">
+            <canvas id="signature-pad"></canvas>
+        </div>
+    </div>
+
+    <div class="buttons">
+        <div id="verifyStatus"></div>
+        <button id="clearBtn">Clear</button>
+        <button id="launchBtn" disabled>AUTHENTICATE & LAUNCH</button>
+    </div>
 </div>
 
+<!-- Advanced Reveal Screen With Canvas -->
 <div id="revealScreen">
+    <!-- Cinematic Particle Canvas -->
+    <canvas id="animationCanvas"></canvas>
 
-    <img src="assets/logo.png" id="revealLogo">
-
-    <h2>OFFICIALLY LAUNCHED</h2>
-
-    <p>
-        Initializing Digital Welfare Platform...
-    </p>
-
+    <!-- Final Content Elements -->
+    <div id="finalContent">
+        <img src="assets/logo.png" id="revealLogo" alt="DLB Logo">
+        <h2 id="launchTitle">OFFICIALLY LAUNCHED</h2>
+        <div class="gold-bar"></div>
+        <p id="launchText">Initializing Digital Welfare Platform...</p>
+    </div>
 </div>
 
 <script src="js/script.js"></script>
-
 </body>
 </html>
