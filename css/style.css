@@ -5,76 +5,211 @@
 }
 
 body{
-    background:#081f4d;
-    color:white;
-    font-family:Arial, sans-serif;
+    background: radial-gradient(circle at center, #06142e 0%, #020712 100%);
+    color:#e2e8f0;
+    font-family: 'Segoe UI', Arial, sans-serif;
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
+    overflow:hidden;
 }
 
 .container{
     text-align:center;
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    max-width: 800px;
+    width: 90vw;
 }
 
-.logo{
-    width:120px;
-    margin-bottom:20px;
+/* Professional Header Styling */
+.brand-header h1 {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    color: #ffffff;
+    font-weight: 700;
 }
 
-h1{
-    margin-bottom:10px;
+.separator {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #aa771c, #f3e5ab, #aa771c);
+    margin: 12px auto;
+    border-radius: 2px;
+}
+
+.brand-header h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #d4af37;
+    letter-spacing: 1px;
 }
 
 .subtitle{
-    margin-bottom:20px;
+    margin-bottom:30px;
+    color: #718096;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.logo{
+    width:105px;
+    margin-bottom:15px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+}
+
+/* Premium Signature Box & Wrapping Layout */
+.signature-container {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+    margin-bottom: 20px;
+    transition: border-color 0.5s ease;
+}
+
+.signature-container label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #a0aec0;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.pad-wrapper {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #ffffff; /* Default white signature box */
+    border: 1px solid #ddd;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #signature-pad{
-    width:700px;
-    height:250px;
-    max-width:90vw;
-    background:white;
-    border-radius:10px;
-    border:2px solid #ddd;
+    width:100%;
+    height:100%;
+    background: transparent;
+    cursor: crosshair;
 }
 
+/* Sleek Buttons */
 .buttons{
     margin-top:20px;
 }
 
 button{
-    padding:12px 24px;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    margin:0 10px;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin: 0 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#clearBtn {
+    background: transparent;
+    color: #a0aec0;
+    border: 1px solid rgba(160, 174, 192, 0.4);
+}
+
+#clearBtn:hover {
+    background: rgba(160, 174, 192, 0.1);
+    color: #fff;
 }
 
 #launchBtn{
-    background:#f5a800;
-    color:black;
+    background: linear-gradient(135deg, #aa771c 0%, #f3e5ab 50%, #aa771c 100%);
+    color: #030c1e;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+#launchBtn:not(:disabled):hover{
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+    transform: translateY(-2px);
 }
 
 #launchBtn:disabled{
-    opacity:0.4;
-    cursor:not-allowed;
+    background: #2d3748;
+    color: #718096;
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
+#verifyStatus{
+    margin-bottom:15px;
+    min-height:25px;
+    font-size:0.95rem;
+    letter-spacing: 1px;
+}
+
+.verifying{ color: #f3e5ab; }
+.verified{ color: #48bb78; }
+
+/* --- Reveal Screen --- */
 #revealScreen{
     display:none;
-    text-align:center;
+    position:fixed;
+    inset:0;
+    background:#020712;
+    z-index: 999;
+    pointer-events: none;
+}
+
+#animationCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+#finalContent {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: scale(0.9);
+    z-index: 10;
+    pointer-events: none;
 }
 
 #revealLogo{
-    width:250px;
-    opacity:0;
-    transform:scale(.3);
-    transition:all 2s ease;
+    width:200px;
+    margin-bottom: 25px;
 }
 
-.showLogo{
-    opacity:1 !important;
-    transform:scale(1) !important;
+#launchTitle {
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, #bfc5ca 0%, #ffffff 50%, #b2b7bc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+.gold-bar {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin-bottom: 15px;
+}
+
+#launchText {
+    font-size: 1.05rem;
+    color: #a0aec0;
+    letter-spacing: 2px;
 }
