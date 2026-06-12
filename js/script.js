@@ -26,7 +26,7 @@ window.addEventListener("DOMContentLoaded", () => {
     resizeCanvases();
     signaturePad = new SignaturePad(canvas, {
         backgroundColor: "rgba(255,255,255,0)", 
-        penColor: "rgb(15, 23, 42)" // Drawing the signature in black
+        penColor: "rgb(15, 23, 42)" // Draw signature using dark ink
     });
 
     canvas.addEventListener("mouseup", enableLaunchButton);
@@ -128,7 +128,7 @@ function setupParticleSystem() {
         sigLines.forEach(line => {
             line.points.forEach(pt => {
                 const rect = canvas.getBoundingClientRect();
-                for (let k = 0; k < 2.5; k++) { 
+                for (let k = 0; k < 2.5; k++) {
                     particles.push(new Particle(rect.left + pt.x, rect.top + pt.y));
                 }
             });
@@ -149,15 +149,15 @@ function animate() {
 launchBtn.addEventListener("click", () => {
     if (signaturePad.isEmpty()) return;
 
-    // --- PURE PREMIUM GOLD OVERWRITE MAGIC ---
+    // Premium Gold Transformation Effect
     const sigCtx = canvas.getContext("2d");
     
-    // 1. Making the white background wrapper completely transparent
+    // Make the white signature area fully transparent
     padWrapper.style.background = "transparent"; 
     padWrapper.style.border = "1px solid transparent";
     padWrapper.style.boxShadow = "none";
 
-    // 2. Creating a 3D-like realistic Luxury Gold Gradient directly inside the canvas
+    // Create a realistic luxury gold gradient directly inside the canvas
     const goldGrad = sigCtx.createLinearGradient(0, 0, canvas.width, 0);
     goldGrad.addColorStop(0, "#aa771c");
     goldGrad.addColorStop(0.25, "#f3e5ab");
@@ -165,17 +165,17 @@ launchBtn.addEventListener("click", () => {
     goldGrad.addColorStop(0.75, "#ffea85");
     goldGrad.addColorStop(1, "#aa771c");
 
-    // 3. Using Composite Operation to replace only the black lines with the real Gold Gradient
+    // Replace only the signature stroke with the gold gradient
     sigCtx.save();
     sigCtx.globalCompositeOperation = "source-in";
     sigCtx.fillStyle = goldGrad;
     sigCtx.fillRect(0, 0, canvas.width, canvas.height);
     sigCtx.restore();
 
-    // 4. Adding an Organic Gold Glow once the black signature completely turns into gold
+    // Apply a natural gold glow effect
     canvas.style.filter = "drop-shadow(0px 0px 15px #d4af37) drop-shadow(0px 0px 4px #ffea85)";
     
-    // STEP 2: The 5-Second Golden Hold (Signature shines in pure gold for 5 seconds)
+    // STEP 2: Hold the gold signature on screen for 5 seconds
     setTimeout(() => {
         setupParticleSystem();
         animationStage = 1; 
@@ -194,7 +194,7 @@ launchBtn.addEventListener("click", () => {
 
     }, 5000); 
 
-    // STEP 3: Smooth Reveal of Final DLB Logo
+    // STEP 3: Smooth reveal of the final DLB logo
     setTimeout(() => {
         animationStage = 2; 
         
@@ -206,7 +206,7 @@ launchBtn.addEventListener("click", () => {
         });
     }, 6500); 
 
-    // STEP 4: URL Redirect
+    // STEP 4: Redirect to the website
     setTimeout(() => {
         window.location.href = "https://www.welfare.dlb.lk";
     }, 12500);
